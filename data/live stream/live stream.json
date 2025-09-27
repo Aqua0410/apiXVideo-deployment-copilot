@@ -1,0 +1,365 @@
+{
+"models": [
+{
+"username": "BoniKlay",
+"avatarUrl": "https://i.wlicdn.com/live/02c/109/209/xbig_lq/be34a8.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/02c/109/209/xbig_lq/be34a8.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/02c/109/209/xbig_lq/be34a8.jpg",
+"isLive": true,
+"viewersCount": 1068,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7126-edge65.bcvcdn.com/hls/stream_BoniKlay/playlist.m3u8"
+},
+{
+"username": "HaileyRose",
+"avatarUrl": "https://i.wlicdn.com/live/0a6/325/1ce/xbig_lq/f395f0.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0a6/325/1ce/xbig_lq/f395f0.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0a6/325/1ce/xbig_lq/f395f0.jpg",
+"isLive": true,
+"viewersCount": 4766,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7126-edge65.bcvcdn.com/hls/stream_HaileyRose/playlist.m3u8"
+},
+{
+"username": "AvaMercer",
+"avatarUrl": "https://i.wlicdn.com/live/0c4/3b0/345/xbig_lq/a75770.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0c4/3b0/345/xbig_lq/a75770.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0c4/3b0/345/xbig_lq/a75770.jpg",
+"isLive": true,
+"viewersCount": 758,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6358-edge24.bcvcdn.com/hls/stream_AvaMercer/playlist.m3u8"
+},
+{
+"username": "Marry-Cordy",
+"avatarUrl": "https://i.wlicdn.com/live/0b2/012/268/xbig_lq/5622ad.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0b2/012/268/xbig_lq/5622ad.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0b2/012/268/xbig_lq/5622ad.jpg",
+"isLive": true,
+"viewersCount": 1232,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7126-edge65.bcvcdn.com/hls/stream_Marry-Cordy/playlist.m3u8"
+},
+{
+"username": "kissmabont",
+"avatarUrl": "https://i.wlicdn.com/live/01b/3c4/2d7/xbig_lq/b8aabf.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/01b/3c4/2d7/xbig_lq/b8aabf.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/01b/3c4/2d7/xbig_lq/b8aabf.jpg",
+"isLive": true,
+"viewersCount": 713,
+"groupShowType": "",
+"hlsPlaylist": "https://ded1080-edge28.bcvcdn.com/hls/stream_kissmabont/playlist.m3u8"
+},
+{
+"username": "Vik1One1",
+"avatarUrl": "https://i.wlicdn.com/live/074/049/281/xbig_lq/973574.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/074/049/281/xbig_lq/973574.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/074/049/281/xbig_lq/973574.jpg",
+"isLive": true,
+"viewersCount": 772,
+"groupShowType": "",
+"hlsPlaylist": "https://ded4160-edge-us4.bcvcdn.com/hls/stream_Vik1One1/playlist.m3u8"
+},
+{
+"username": "Dualityx",
+"avatarUrl": "https://i.wlicdn.com/live/0db/32c/085/xbig_lq/06b486.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0db/32c/085/xbig_lq/06b486.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0db/32c/085/xbig_lq/06b486.jpg",
+"isLive": true,
+"viewersCount": 962,
+"groupShowType": "",
+"hlsPlaylist": "https://ded4416-edge-us56.bcvcdn.com/hls/stream_Dualityx/playlist.m3u8"
+},
+{
+"username": "Ellidi",
+"avatarUrl": "https://i.wlicdn.com/live/092/1d2/04e/xbig_lq/23a5ef.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/092/1d2/04e/xbig_lq/23a5ef.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/092/1d2/04e/xbig_lq/23a5ef.jpg",
+"isLive": true,
+"viewersCount": 627,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7126-edge65.bcvcdn.com/hls/stream_Ellidi/playlist.m3u8"
+},
+{
+"username": "Sarawhitee",
+"avatarUrl": "https://i.wlicdn.com/live/0d7/2a5/383/xbig_lq/d3e3de.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0d7/2a5/383/xbig_lq/d3e3de.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0d7/2a5/383/xbig_lq/d3e3de.jpg",
+"isLive": true,
+"viewersCount": 1061,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6688-edge35.bcvcdn.com/hls/stream_Sarawhitee/playlist.m3u8"
+},
+{
+"username": "HellMor",
+"avatarUrl": "https://i.wlicdn.com/live/06a/0a8/281/xbig_lq/67e4e8.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/06a/0a8/281/xbig_lq/67e4e8.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/06a/0a8/281/xbig_lq/67e4e8.jpg",
+"isLive": true,
+"viewersCount": 1081,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6740-edge20.bcvcdn.com/hls/stream_HellMor/playlist.m3u8"
+},
+{
+"username": "BloomJuliette",
+"avatarUrl": "https://i.wlicdn.com/live/072/06c/1c9/xbig_lq/a5b1ba.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/072/06c/1c9/xbig_lq/a5b1ba.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/072/06c/1c9/xbig_lq/a5b1ba.jpg",
+"isLive": true,
+"viewersCount": 771,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6685-edge34.bcvcdn.com/hls/stream_BloomJuliette/playlist.m3u8"
+},
+{
+"username": "juicy-peachh",
+"avatarUrl": "https://i.wlicdn.com/live/0a4/0fc/3c0/xbig_lq/5b0bc6.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0a4/0fc/3c0/xbig_lq/5b0bc6.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0a4/0fc/3c0/xbig_lq/5b0bc6.jpg",
+"isLive": true,
+"viewersCount": 652,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6479-edge64.bcvcdn.com/hls/stream_juicy-peachh/playlist.m3u8"
+},
+{
+"username": "Chelsi16",
+"avatarUrl": "https://i.wlicdn.com/live/0c9/1dc/099/xbig_lq/df01a4.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0c9/1dc/099/xbig_lq/df01a4.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0c9/1dc/099/xbig_lq/df01a4.jpg",
+"isLive": true,
+"viewersCount": 1749,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6443-edge12.bcvcdn.com/hls/stream_Chelsi16/playlist.m3u8"
+},
+{
+"username": "lili-roze",
+"avatarUrl": "https://i.wlicdn.com/live/0c4/1d7/1c2/xbig_lq/128b46.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0c4/1d7/1c2/xbig_lq/128b46.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0c4/1d7/1c2/xbig_lq/128b46.jpg",
+"isLive": true,
+"viewersCount": 711,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6685-edge34.bcvcdn.com/hls/stream_lili-roze/playlist.m3u8"
+},
+{
+"username": "Pinkie-Pie",
+"avatarUrl": "https://i.wlicdn.com/live/06e/1ef/0c4/xbig_lq/d3e3de.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/06e/1ef/0c4/xbig_lq/d3e3de.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/06e/1ef/0c4/xbig_lq/d3e3de.jpg",
+"isLive": true,
+"viewersCount": 906,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6685-edge34.bcvcdn.com/hls/stream_Pinkie-Pie/playlist.m3u8"
+},
+{
+"username": "PleasureWeCouple",
+"avatarUrl": "https://i.wlicdn.com/live/0d9/181/2c0/xbig_lq/6a1df2.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0d9/181/2c0/xbig_lq/6a1df2.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0d9/181/2c0/xbig_lq/6a1df2.jpg",
+"isLive": true,
+"viewersCount": 1367,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7126-edge65.bcvcdn.com/hls/stream_PleasureWeCouple/playlist.m3u8"
+},
+{
+"username": "sosgirl1994",
+"avatarUrl": "https://i.wlicdn.com/live/069/18a/059/xbig_lq/942853.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/069/18a/059/xbig_lq/942853.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/069/18a/059/xbig_lq/942853.jpg",
+"isLive": true,
+"viewersCount": 623,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6812-edge16.bcvcdn.com/hls/stream_sosgirl1994/playlist.m3u8"
+},
+{
+"username": "ALISE8881",
+"avatarUrl": "https://i.wlicdn.com/live/0db/051/096/xbig_lq/c44798.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0db/051/096/xbig_lq/c44798.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0db/051/096/xbig_lq/c44798.jpg",
+"isLive": true,
+"viewersCount": 2152,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7120-edge60.bcvcdn.com/hls/stream_ALISE8881/playlist.m3u8"
+},
+{
+"username": "Oks---Rus",
+"avatarUrl": "https://i.wlicdn.com/live/0c2/143/016/xbig_lq/646245.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0c2/143/016/xbig_lq/646245.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0c2/143/016/xbig_lq/646245.jpg",
+"isLive": true,
+"viewersCount": 599,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7126-edge65.bcvcdn.com/hls/stream_Oks---Rus/playlist.m3u8"
+},
+{
+"username": "gingerbreads",
+"avatarUrl": "https://i.wlicdn.com/live/035/382/046/xbig_lq/b35af1.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/035/382/046/xbig_lq/b35af1.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/035/382/046/xbig_lq/b35af1.jpg",
+"isLive": true,
+"viewersCount": 683,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6895-edge4.bcvcdn.com/hls/stream_gingerbreads/playlist.m3u8"
+},
+{
+"username": "-VikkiL0vesCheese-",
+"avatarUrl": "https://i.wlicdn.com/live/0a6/250/1dc/xbig_lq/0fc911.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0a6/250/1dc/xbig_lq/0fc911.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0a6/250/1dc/xbig_lq/0fc911.jpg",
+"isLive": true,
+"viewersCount": 633,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6358-edge24.bcvcdn.com/hls/stream_-VikkiL0vesCheese-/playlist.m3u8"
+},
+{
+"username": "HolyDevilS",
+"avatarUrl": "https://i.wlicdn.com/live/0a8/248/2f0/xbig_lq/9d1078.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0a8/248/2f0/xbig_lq/9d1078.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0a8/248/2f0/xbig_lq/9d1078.jpg",
+"isLive": true,
+"viewersCount": 1154,
+"groupShowType": "",
+"hlsPlaylist": "https://ded1080-edge28.bcvcdn.com/hls/stream_HolyDevilS/playlist.m3u8"
+},
+{
+"username": "YuliyaLasker",
+"avatarUrl": "https://i.wlicdn.com/live/092/122/07f/xbig_lq/e09524.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/092/122/07f/xbig_lq/e09524.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/092/122/07f/xbig_lq/e09524.jpg",
+"isLive": true,
+"viewersCount": 1433,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6358-edge24.bcvcdn.com/hls/stream_YuliyaLasker/playlist.m3u8"
+},
+{
+"username": "StarKristy",
+"avatarUrl": "https://i.wlicdn.com/live/0cb/18b/026/xbig_lq/3bfc0d.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0cb/18b/026/xbig_lq/3bfc0d.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0cb/18b/026/xbig_lq/3bfc0d.jpg",
+"isLive": true,
+"viewersCount": 832,
+"groupShowType": "",
+"hlsPlaylist": "https://ded4416-edge-us56.bcvcdn.com/hls/stream_StarKristy/playlist.m3u8"
+},
+{
+"username": "lean-lie",
+"avatarUrl": "https://i.wlicdn.com/live/0bc/3da/39f/xbig_lq/780b0e.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0bc/3da/39f/xbig_lq/780b0e.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0bc/3da/39f/xbig_lq/780b0e.jpg",
+"isLive": true,
+"viewersCount": 2905,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7126-edge65.bcvcdn.com/hls/stream_lean-lie/playlist.m3u8"
+},
+{
+"username": "Pechalka",
+"avatarUrl": "https://i.wlicdn.com/live/0c2/376/1d1/xbig_lq/0ba066.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0c2/376/1d1/xbig_lq/0ba066.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0c2/376/1d1/xbig_lq/0ba066.jpg",
+"isLive": true,
+"viewersCount": 1918,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6740-edge20.bcvcdn.com/hls/stream_Pechalka/playlist.m3u8"
+},
+{
+"username": "Talilia",
+"avatarUrl": "https://i.wlicdn.com/live/0c0/160/193/xbig_lq/57b62c.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0c0/160/193/xbig_lq/57b62c.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0c0/160/193/xbig_lq/57b62c.jpg",
+"isLive": true,
+"viewersCount": 829,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6895-edge4.bcvcdn.com/hls/stream_Talilia/playlist.m3u8"
+},
+{
+"username": "seksiparaa",
+"avatarUrl": "https://i.wlicdn.com/live/070/1d9/30b/xbig_lq/1ffca7.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/070/1d9/30b/xbig_lq/1ffca7.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/070/1d9/30b/xbig_lq/1ffca7.jpg",
+"isLive": true,
+"viewersCount": 801,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6688-edge35.bcvcdn.com/hls/stream_seksiparaa/playlist.m3u8"
+},
+{
+"username": "Isilib-kisa",
+"avatarUrl": "https://i.wlicdn.com/live/077/17d/0cc/xbig_lq/9df9cf.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/077/17d/0cc/xbig_lq/9df9cf.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/077/17d/0cc/xbig_lq/9df9cf.jpg",
+"isLive": true,
+"viewersCount": 583,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6358-edge24.bcvcdn.com/hls/stream_Isilib-kisa/playlist.m3u8"
+},
+{
+"username": "LolyMolyyy",
+"avatarUrl": "https://i.wlicdn.com/live/0d5/3d2/338/xbig_lq/91a561.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0d5/3d2/338/xbig_lq/91a561.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0d5/3d2/338/xbig_lq/91a561.jpg",
+"isLive": true,
+"viewersCount": 709,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6740-edge20.bcvcdn.com/hls/stream_LolyMolyyy/playlist.m3u8"
+},
+{
+"username": "NikkySecrets",
+"avatarUrl": "https://i.wlicdn.com/live/0b9/1ee/382/xbig_lq/1fa17a.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0b9/1ee/382/xbig_lq/1fa17a.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0b9/1ee/382/xbig_lq/1fa17a.jpg",
+"isLive": true,
+"viewersCount": 1033,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6810-edge48.bcvcdn.com/hls/stream_NikkySecrets/playlist.m3u8"
+},
+{
+"username": "LekfullKitten",
+"avatarUrl": "https://i.wlicdn.com/live/06e/2d5/016/xbig_lq/67c80e.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/06e/2d5/016/xbig_lq/67c80e.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/06e/2d5/016/xbig_lq/67c80e.jpg",
+"isLive": true,
+"viewersCount": 622,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6810-edge48.bcvcdn.com/hls/stream_LekfullKitten/playlist.m3u8"
+},
+{
+"username": "VelvetMoon11",
+"avatarUrl": "https://i.wlicdn.com/live/0cf/316/2ed/xbig_lq/1001d3.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0cf/316/2ed/xbig_lq/1001d3.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0cf/316/2ed/xbig_lq/1001d3.jpg",
+"isLive": true,
+"viewersCount": 798,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6688-edge35.bcvcdn.com/hls/stream_VelvetMoon11/playlist.m3u8"
+},
+{
+"username": "kaleb-violeta",
+"avatarUrl": "https://i.wlicdn.com/live/0da/1c7/289/xbig_lq/3be9bd.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0da/1c7/289/xbig_lq/3be9bd.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0da/1c7/289/xbig_lq/3be9bd.jpg",
+"isLive": true,
+"viewersCount": 944,
+"groupShowType": "",
+"hlsPlaylist": "https://ded4037-edge-us66.bcvcdn.com/hls/stream_kaleb-violeta/playlist.m3u8"
+},
+{
+"username": "EvaFashionista",
+"avatarUrl": "https://i.wlicdn.com/live/0d1/19d/295/xbig_lq/ab9e20.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0d1/19d/295/xbig_lq/ab9e20.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0d1/19d/295/xbig_lq/ab9e20.jpg",
+"isLive": true,
+"viewersCount": 685,
+"groupShowType": "",
+"hlsPlaylist": "https://ded7120-edge60.bcvcdn.com/hls/stream_EvaFashionista/playlist.m3u8"
+},
+{
+"username": "Milana555550",
+"avatarUrl": "https://i.wlicdn.com/live/0a0/0ce/049/xbig_lq/5d207e.jpg",
+"previewUrlThumbSmall": "https://i.wlicdn.com/live/0a0/0ce/049/xbig_lq/5d207e.jpg",
+"previewUrlThumbBig": "https://i.wlicdn.com/live/0a0/0ce/049/xbig_lq/5d207e.jpg",
+"isLive": true,
+"viewersCount": 1343,
+"groupShowType": "",
+"hlsPlaylist": "https://ded6443-edge12.bcvcdn.com/hls/stream_Milana555550/playlist.m3u8"
+}
+],
+"totalCount": 3740
+}

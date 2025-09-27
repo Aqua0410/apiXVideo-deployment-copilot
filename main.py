@@ -8,22 +8,30 @@ DATA_DIR = "data"
 
 @app.get("/files")
 def list_files():
-    files = [f for f in os.listdir(DATA_DIR) if f.endswith(".txt")]
+    files = []
+    data_path = Path(DATA_DIR)
+    
+    # Recursively find all .json files
+    for json_file in data_path.rglob("*.json"):
+        # Get relative path from data directory
+        relative_path = json_file.relative_to(data_path)
+        files.append(str(relative_path))
+    
     return {"files": files}
 
-@app.get("/files/{filename}")
-def get_file(filename: str):
-    # Enforce .txt extension
-    if not filename.endswith('.txt'):
-        raise HTTPException(status_code=400, detail="Only .txt files are allowed")
+@app.get("/files/{filepath:path}")
+def get_file(filepath: str):
+    # Enforce .json extension
+    if not filepath.endswith('.json'):
+        raise HTTPException(status_code=400, detail="Only .json files are allowed")
     
-    # Prevent directory traversal attacks
-    if '/' in filename or '\\' in filename or '..' in filename:
+    # Prevent directory traversal attacks (allow forward slashes for subdirs)
+    if '..' in filepath or '\\' in filepath:
         raise HTTPException(status_code=404, detail="File not found")
     
     # Construct and validate the file path
     data_path = Path(DATA_DIR).resolve()
-    file_path = (data_path / filename).resolve()
+    file_path = (data_path / filepath).resolve()
     
     # Ensure the resolved path is within the data directory
     if not file_path.is_relative_to(data_path):
