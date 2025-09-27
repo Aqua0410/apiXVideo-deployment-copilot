@@ -1,0 +1,40 @@
+0)/tag/000/000/018/89300948.jpg","count":"400"},{"id":"51","title":"Cumswap","thumb":"https://ic-tt-nss.xhpingcdn.com/a/NzZlZDAwYjI4NmUyZWMzODBkYmY2NmRjMTgxY2ZiNzM/s(w:640,h:360)/tag/000/425/457/06f92428.jpg","dnf --disablerepo=gf* install certbot python3-certbot-nginx -y --disablerepo=gf* install certbot python3-certbot-nginx -y
+certbot --nginx -d videodownloaderyt.xyz
+Last metadata expiration check: 0:22:40 ago on Sat 27 Sep 2025 09:32:32 AM UTC.
+Package certbot-3.1.0-1.el9.noarch is already installed.
+Dependencies resolved.
+======================================================================================================================================================================
+ Package                                           Architecture                       Version                                  Repository                        Size
+======================================================================================================================================================================
+Installing:
+ python3-certbot-nginx                             noarch                             3.1.0-1.el9                              epel                             156 k
+
+Transaction Summary
+======================================================================================================================================================================
+Install  1 Package
+
+Total download size: 156 k
+Installed size: 672 k
+Downloading Packages:
+python3-certbot-nginx-3.1.0-1.el9.noarch.rpm                                                                                           79 kB/s | 156 kB     00:01    
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                  48 kB/s | 156 kB     00:03     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                              1/1 
+  Installing       : python3-certbot-nginx-3.1.0-1.el9.noarch                                                                                                     1/1 
+  Running scriptlet: python3-certbot-nginx-3.1.0-1.el9.noarch                                                                                                     1/1 
+  Verifying        : python3-certbot-nginx-3.1.0-1.el9.noarch                                                                                                     1/1 
+
+Installed:
+  python3-certbot-nginx-3.1.0-1.el9.noarch                                                                                                                            
+
+Complete!
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Requesting a certificate for videodownloaderyt.xyz
+live directory exists for videodownloaderyt.xyz
+Ask for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details.
+(venv) [root@srv867390 fastapi-fileserver]# 
