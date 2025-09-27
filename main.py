@@ -1,13 +1,20 @@
 import os
 import json
 from pathlib import Path
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends, Header
+from typing import Optional
 
 app = FastAPI()
 DATA_DIR = "data"
+API_KEY = os.getenv("SESSION_SECRET")
+
+def verify_api_key(x_api_key: Optional[str] = Header(None)):
+    if x_api_key != API_KEY or not x_api_key:
+        raise HTTPException(status_code=401, detail="Invalid or missing API key")
+    return x_api_key
 
 @app.get("/files")
-def list_files():
+def list_files(api_key: str = Depends(verify_api_key)):
     files = []
     data_path = Path(DATA_DIR)
     
@@ -20,7 +27,7 @@ def list_files():
     return {"files": files}
 
 @app.get("/files/{filepath:path}")
-def get_file(filepath: str):
+def get_file(filepath: str, api_key: str = Depends(verify_api_key)):
     # Enforce .json extension
     if not filepath.endswith('.json'):
         raise HTTPException(status_code=400, detail="Only .json files are allowed")
