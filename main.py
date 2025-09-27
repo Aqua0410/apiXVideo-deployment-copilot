@@ -13,6 +13,10 @@ def verify_api_key(x_api_key: Optional[str] = Header(None)):
         raise HTTPException(status_code=401, detail="Invalid or missing API key")
     return x_api_key
 
+@app.get("/")
+def health_check():
+    return {"status": "healthy", "message": "FastAPI File Server is running"}
+
 @app.get("/files")
 def list_files(api_key: str = Depends(verify_api_key)):
     files = []
