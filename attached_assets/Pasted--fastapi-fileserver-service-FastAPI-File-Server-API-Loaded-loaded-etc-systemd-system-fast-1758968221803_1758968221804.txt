@@ -1,0 +1,26 @@
+● fastapi-fileserver.service - FastAPI File Server API
+     Loaded: loaded (/etc/systemd/system/fastapi-fileserver.service; enabled; preset: disabled)
+     Active: active (running) since Sat 2025-09-27 09:52:49 UTC; 23min ago
+   Main PID: 126948 (uvicorn)
+      Tasks: 8 (limit: 48637)
+     Memory: 85.5M
+        CPU: 7.366s
+     CGroup: /system.slice/fastapi-fileserver.service
+             ├─126948 /var/www/fastapi-fileserver/venv/bin/python3 /var/www/fastapi-fileserver/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000 --workers 2
+             ├─126949 /var/www/fastapi-fileserver/venv/bin/python3 -c "from multiprocessing.resource_tracker import main;main(6)"
+             ├─126950 /var/www/fastapi-fileserver/venv/bin/python3 -c "from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=7, pipe_handle=9)" --multi>
+             └─126951 /var/www/fastapi-fileserver/venv/bin/python3 -c "from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=7, pipe_handle=13)" --mult>
+
+Sep 27 09:56:48 srv867390.hstgr.cloud uvicorn[126951]: INFO:     164.90.228.79:0 - "GET /config.json HTTP/1.0" 404 Not Found
+Sep 27 09:56:49 srv867390.hstgr.cloud uvicorn[126951]: INFO:     164.90.228.79:0 - "GET /telescope/requests HTTP/1.0" 404 Not Found
+Sep 27 09:56:49 srv867390.hstgr.cloud uvicorn[126950]: INFO:     164.90.228.79:0 - "GET /info.php HTTP/1.0" 404 Not Found
+Sep 27 09:56:49 srv867390.hstgr.cloud uvicorn[126950]: INFO:     164.90.228.79:0 - "GET /?rest_route=/wp/v2/users/ HTTP/1.0" 200 OK
+Sep 27 09:58:36 srv867390.hstgr.cloud uvicorn[126951]: INFO:     205.169.39.36:0 - "GET / HTTP/1.0" 200 OK
+Sep 27 09:58:37 srv867390.hstgr.cloud uvicorn[126951]: INFO:     34.72.176.129:0 - "GET / HTTP/1.0" 200 OK
+Sep 27 10:05:21 srv867390.hstgr.cloud uvicorn[126951]: INFO:     103.251.59.27:0 - "GET /files/category%20video/0.json HTTP/1.0" 200 OK
+Sep 27 10:05:32 srv867390.hstgr.cloud uvicorn[126950]: INFO:     103.251.59.27:0 - "GET /files/category%20video/10.json HTTP/1.0" 200 OK
+Sep 27 10:07:01 srv867390.hstgr.cloud uvicorn[126950]: INFO:     103.251.59.27:0 - "GET / HTTP/1.0" 200 OK
+Sep 27 10:07:01 srv867390.hstgr.cloud uvicorn[126950]: INFO:     103.251.59.27:0 - "GET /favicon.ico HTTP/1.0" 404 Not Found
+
+nginx     126948  0.0  0.3  30772 25844 ?        Ss   09:52   0:01 /var/www/fastapi-fileserver/venv/bin/python3 /var/www/fastapi-fileserver/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000 --workers 2
+root      127591  0.0  0.0   6408  2432 pts/0    S+   10:16   0:00 grep --color=auto uvicorn
