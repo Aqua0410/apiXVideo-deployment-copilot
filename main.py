@@ -2,6 +2,7 @@ import os
 import json
 import asyncio
 import tempfile
+import logging
 from pathlib import Path
 from fastapi import FastAPI, HTTPException, Depends, Header
 from typing import Optional, Dict, Any, List
@@ -14,6 +15,13 @@ API_KEY = os.getenv("SESSION_SECRET")
 
 # In-memory cache for reels data
 _reels_cache = {"data": None, "timestamp": None, "ttl": 300}  # 5 min cache
+
+# Background task control
+_background_task = None
+_refresh_lock = asyncio.Lock()
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
 
 def verify_api_key(x_api_key: Optional[str] = Header(None)):
     if x_api_key != API_KEY or not x_api_key:
@@ -221,3 +229,128 @@ async def refresh_reels_data(api_key: str = Depends(verify_api_key)):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error updating reels data: {str(e)}")
+
+async def auto_refresh_reels():
+    """Background task to automatically refresh reels data every 5 minutes"""
+    while True:
+        try:
+            # Use lock to prevent multiple workers from refreshing simultaneously
+            async with _refresh_lock:
+                logging.info("Auto-refreshing reels data...")
+                
+                # Fetch fresh data
+                fresh_reels = await fetch_fresh_reels_data()
+                
+                if fresh_reels:
+                    # Update reels.json file atomically
+                    reels_file = Path(DATA_DIR) / "reelsvideo" / "reels.json"
+                    reels_file.parent.mkdir(parents=True, exist_ok=True)
+                    
+                    # Create new JSON structure
+                    updated_data = {
+                        "reels": fresh_reels
+                    }
+                    
+                    # Atomic write with unique temp file
+                    import uuid
+                    temp_file = reels_file.with_suffix(f'.tmp.{uuid.uuid4().hex[:8]}')
+                    
+                    try:
+                        with open(temp_file, "w", encoding="utf-8") as f:
+                            json.dump(updated_data, f, indent=2, ensure_ascii=False)
+                            f.flush()
+                            os.fsync(f.fileno())  # Force write to disk
+                        
+                        # Atomic move to final location
+                        temp_file.replace(reels_file)
+                        
+                        # Update cache
+                        _reels_cache["data"] = updated_data
+                        _reels_cache["timestamp"] = datetime.now()
+                        
+                        logging.info(f"Auto-refresh completed: {len(fresh_reels)} videos updated")
+                        
+                    except Exception:
+                        # Clean up temp file on error
+                        if temp_file.exists():
+                            temp_file.unlink()
+                        raise
+                        
+                else:
+                    logging.warning("Auto-refresh failed: No data received")
+                    
+        except Exception as e:
+            logging.error(f"Auto-refresh error: {str(e)}")
+        
+        # Wait 5 minutes before next refresh
+        await asyncio.sleep(300)  # 300 seconds = 5 minutes
+
+@app.on_event("startup")
+async def startup_event():
+    """Start background tasks when the application starts"""
+    global _background_task
+    
+    # Only start background task in one worker (check if we're the first worker)
+    worker_id = os.getpid()
+    
+    # Start the auto-refresh task only in first worker or single process
+    if _background_task is None:
+        _background_task = asyncio.create_task(auto_refresh_reels())
+        logging.info(f"Background auto-refresh task started in worker {worker_id} (every 5 minutes)")
+    
+    # Do initial refresh only once
+    try:
+        async with _refresh_lock:
+            reels_file = Path(DATA_DIR) / "reelsvideo" / "reels.json"
+            
+            # Only do initial refresh if file doesn't exist or is old
+            if not reels_file.exists() or _reels_cache["data"] is None:
+                fresh_reels = await fetch_fresh_reels_data()
+                if fresh_reels:
+                    reels_file.parent.mkdir(parents=True, exist_ok=True)
+                    
+                    updated_data = {"reels": fresh_reels}
+                    
+                    # Use unique temp file for initial load too
+                    import uuid
+                    temp_file = reels_file.with_suffix(f'.tmp.{uuid.uuid4().hex[:8]}')
+                    
+                    try:
+                        with open(temp_file, "w", encoding="utf-8") as f:
+                            json.dump(updated_data, f, indent=2, ensure_ascii=False)
+                            f.flush()
+                            os.fsync(f.fileno())
+                        
+                        temp_file.replace(reels_file)
+                        
+                        _reels_cache["data"] = updated_data
+                        _reels_cache["timestamp"] = datetime.now()
+                        
+                        logging.info(f"Initial data loaded by worker {worker_id}: {len(fresh_reels)} videos")
+                        
+                    except Exception:
+                        if temp_file.exists():
+                            temp_file.unlink()
+                        raise
+            else:
+                # Load existing data into cache
+                with open(reels_file, "r", encoding="utf-8") as f:
+                    _reels_cache["data"] = json.load(f)
+                    _reels_cache["timestamp"] = datetime.fromtimestamp(reels_file.stat().st_mtime)
+                logging.info(f"Worker {worker_id} loaded existing data from cache")
+                
+    except Exception as e:
+        logging.error(f"Initial data load failed in worker {worker_id}: {str(e)}")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Clean up background tasks when the application shuts down"""
+    global _background_task
+    
+    if _background_task:
+        _background_task.cancel()
+        try:
+            await _background_task
+        except asyncio.CancelledError:
+            pass
+        logging.info("Background auto-refresh task stopped")
