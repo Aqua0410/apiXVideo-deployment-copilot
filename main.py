@@ -4,7 +4,7 @@ import asyncio
 import tempfile
 import logging
 from pathlib import Path
-from fastapi import FastAPI, HTTPException, Depends, Header
+from fastapi import FastAPI, HTTPException, Depends, Header, Query
 from typing import Optional, Dict, Any, List
 import httpx
 from datetime import datetime, timedelta
@@ -44,6 +44,79 @@ def list_files(api_key: str = Depends(verify_api_key)):
         files.append(str(relative_path))
     
     return {"files": files}
+
+@app.get("/reels")
+async def get_reels_paginated(
+    page: int = Query(1, ge=1, description="Page number (starts from 1)"),
+    limit: int = Query(20, ge=1, le=100, description="Items per page (max 100)"),
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Get paginated reels data - optimized for mobile apps
+    
+    Parameters:
+    - page: Page number (default: 1)
+    - limit: Items per page (default: 20, max: 100)
+    
+    Example: /reels?page=1&limit=20
+    """
+    try:
+        # Get reels data from cache or file
+        reels_data = None
+        
+        # Check cache first
+        if _reels_cache["data"] and _reels_cache["timestamp"]:
+            cache_age = (datetime.now() - _reels_cache["timestamp"]).total_seconds()
+            if cache_age < _reels_cache["ttl"]:
+                reels_data = _reels_cache["data"]
+        
+        # Load from file if not in cache
+        if not reels_data:
+            reels_file = Path(DATA_DIR) / "reelsvideo" / "reels.json"
+            if reels_file.exists():
+                with open(reels_file, "r", encoding="utf-8") as f:
+                    reels_data = json.load(f)
+                    _reels_cache["data"] = reels_data
+                    _reels_cache["timestamp"] = datetime.now()
+            else:
+                raise HTTPException(status_code=404, detail="Reels data not found")
+        
+        # Extract reels array
+        all_reels = reels_data.get("reels", [])
+        total_items = len(all_reels)
+        
+        # Calculate pagination
+        total_pages = (total_items + limit - 1) // limit  # Ceiling division
+        
+        # Validate page number
+        if page > total_pages and total_pages > 0:
+            raise HTTPException(
+                status_code=404, 
+                detail=f"Page {page} not found. Total pages: {total_pages}"
+            )
+        
+        # Calculate slice indices
+        start_idx = (page - 1) * limit
+        end_idx = start_idx + limit
+        
+        # Get paginated items
+        paginated_reels = all_reels[start_idx:end_idx]
+        
+        # Return paginated response with metadata
+        return {
+            "page": page,
+            "limit": limit,
+            "total_items": total_items,
+            "total_pages": total_pages,
+            "has_next": page < total_pages,
+            "has_previous": page > 1,
+            "reels": paginated_reels
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching reels: {str(e)}")
 
 @app.get("/files/{filepath:path}")
 async def get_file(filepath: str, api_key: str = Depends(verify_api_key)):
