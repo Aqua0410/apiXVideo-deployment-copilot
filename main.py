@@ -4,8 +4,9 @@ import asyncio
 import tempfile
 import logging
 from pathlib import Path
-from fastapi import FastAPI, HTTPException, Depends, Header, Query
+from fastapi import FastAPI, HTTPException, Depends, Header, Query, Body
 from typing import Optional, Dict, Any, List
+from pydantic import BaseModel, HttpUrl
 import httpx
 from datetime import datetime, timedelta
 
@@ -163,6 +164,108 @@ async def get_file(filepath: str, api_key: str = Depends(verify_api_key)):
         raise HTTPException(status_code=400, detail="Invalid JSON in file")
     except (OSError, UnicodeDecodeError):
         raise HTTPException(status_code=404, detail="File not found")
+
+class DeleteVideoRequest(BaseModel):
+    video_url: str
+
+@app.delete("/videos")
+async def delete_video(
+    request: DeleteVideoRequest,
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Delete a video from all categoryvideo files by embed URL
+    
+    Request body:
+    {
+        "video_url": "https://xhaccess.com/embed/xhABC123"
+    }
+    
+    Returns count of deleted videos and files modified
+    """
+    video_url = request.video_url.strip()
+    
+    if not video_url:
+        raise HTTPException(status_code=400, detail="video_url cannot be empty")
+    
+    # Validate URL format
+    if not video_url.startswith("http"):
+        raise HTTPException(status_code=400, detail="video_url must be a valid URL")
+    
+    category_dir = Path(DATA_DIR) / "categoryvideo"
+    
+    if not category_dir.exists():
+        raise HTTPException(status_code=404, detail="Category directory not found")
+    
+    deleted_count = 0
+    files_modified = []
+    
+    # Search through all category files (0.json to 54.json)
+    for i in range(0, 55):
+        file_path = category_dir / f"{i}.json"
+        
+        if not file_path.exists():
+            continue
+        
+        try:
+            # Read current file
+            with open(file_path, 'r', encoding='utf-8') as f:
+                videos = json.load(f)
+            
+            if not isinstance(videos, list):
+                continue
+            
+            # Filter out videos matching the URL
+            original_count = len(videos)
+            filtered_videos = [v for v in videos if v.get('video', '') != video_url]
+            new_count = len(filtered_videos)
+            
+            # If videos were removed, write atomically
+            if new_count < original_count:
+                # Atomic write using temp file
+                with tempfile.NamedTemporaryFile(
+                    mode='w',
+                    encoding='utf-8',
+                    dir=category_dir,
+                    delete=False,
+                    suffix='.tmp'
+                ) as tmp_file:
+                    json.dump(filtered_videos, tmp_file, indent=2, ensure_ascii=False)
+                    tmp_path = tmp_file.name
+                
+                # Replace original file
+                os.replace(tmp_path, file_path)
+                
+                removed = original_count - new_count
+                deleted_count += removed
+                files_modified.append({
+                    "file": f"{i}.json",
+                    "deleted": removed
+                })
+                
+                logging.info(f"Deleted {removed} video(s) from {i}.json matching URL: {video_url}")
+        
+        except Exception as e:
+            logging.error(f"Error processing {i}.json: {str(e)}")
+            continue
+    
+    if deleted_count == 0:
+        return {
+            "status": "not_found",
+            "message": "Video not found in any category files",
+            "video_url": video_url,
+            "deleted_count": 0,
+            "files_checked": 55
+        }
+    
+    return {
+        "status": "success",
+        "message": f"Deleted {deleted_count} video(s) from {len(files_modified)} file(s)",
+        "video_url": video_url,
+        "deleted_count": deleted_count,
+        "files_modified": files_modified,
+        "files_checked": 55
+    }
 
 async def fetch_fresh_reels_data() -> List[Dict[str, Any]]:
     """Fetch fresh video data from tik.porn API and transform to our format"""
