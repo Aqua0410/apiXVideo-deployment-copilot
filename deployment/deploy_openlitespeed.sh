@@ -234,6 +234,29 @@ log_info "Installing Python packages..."
 sudo $VENV_DIR/bin/pip install --upgrade pip setuptools wheel -q
 sudo $VENV_DIR/bin/pip install fastapi uvicorn gunicorn httpx pydantic python-dotenv -q
 
+# Copy source files from script directory to deployment directory
+SOURCE_DIR="$SCRIPT_DIR/.."
+log_info "Copying source files from $SOURCE_DIR..."
+
+if [ -f "$SOURCE_DIR/main.py" ]; then
+    sudo cp "$SOURCE_DIR/main.py" $DEPLOY_DIR/
+    log_success "Copied main.py"
+else
+    log_warning "main.py not found in source directory"
+fi
+
+if [ -d "$SOURCE_DIR/data" ]; then
+    sudo cp -r "$SOURCE_DIR/data" $DEPLOY_DIR/
+    log_success "Copied data directory"
+else
+    log_warning "data directory not found in source directory"
+fi
+
+# Set proper permissions
+sudo chown -R nobody:nobody $DEPLOY_DIR
+sudo chmod 755 $DEPLOY_DIR
+sudo chmod 644 $DEPLOY_DIR/main.py 2>/dev/null || true
+
 log_success "Project directory ready"
 echo ""
 
