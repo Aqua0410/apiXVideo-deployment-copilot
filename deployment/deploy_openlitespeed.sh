@@ -276,9 +276,17 @@ if [ -f "$SOURCE_DIR/requirements.txt" ]; then
 fi
 
 # Set proper permissions
-sudo chown -R nobody:nobody $DEPLOY_DIR
-sudo find $DEPLOY_DIR -type f -exec chmod 644 {} \;
-sudo find $DEPLOY_DIR -type d -exec chmod 755 {} \;
+# Keep deployment dir as root (systemd runs as root)
+sudo chmod 755 $DEPLOY_DIR
+# Make venv executables properly executable
+sudo find $DEPLOY_DIR/venv -type f -name "python*" -exec chmod 755 {} \;
+sudo find $DEPLOY_DIR/venv/bin -type f -exec chmod 755 {} \;
+# Set config files with proper permissions
+sudo chmod 644 $DEPLOY_DIR/*.py 2>/dev/null || true
+sudo chmod 644 $DEPLOY_DIR/main.py 2>/dev/null || true
+# Data files should be readable
+sudo chmod 755 $DEPLOY_DIR/data 2>/dev/null || true
+sudo find $DEPLOY_DIR/data -type f -exec chmod 644 {} \; 2>/dev/null || true
 
 log_success "Project directory ready with source files"
 echo ""
