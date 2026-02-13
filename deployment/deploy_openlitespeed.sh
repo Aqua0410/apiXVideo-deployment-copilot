@@ -28,8 +28,12 @@ log_success() { echo -e "${GREEN}✓${NC} $1"; }
 log_warning() { echo -e "${YELLOW}⚠${NC} $1"; }
 log_error() { echo -e "${RED}✗${NC} $1"; }
 
+# Get script directory first (before argument parsing)
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Default config file
 CONFIG_FILE="${SCRIPT_DIR}/../deployment/deploy.conf"
+SOURCE_DIR="${SCRIPT_DIR}/.."
 FAST_MODE=false
 INTERACTIVE=true
 
@@ -45,6 +49,10 @@ while [[ $# -gt 0 ]]; do
             CONFIG_FILE="$2"
             shift 2
             ;;
+        --source)
+            SOURCE_DIR="$2"
+            shift 2
+            ;;
         --interactive)
             INTERACTIVE=true
             FAST_MODE=false
@@ -57,12 +65,14 @@ while [[ $# -gt 0 ]]; do
             echo "  --fast          Non-interactive mode (uses config file / defaults)"
             echo "  --interactive   Interactive mode (ask questions) [DEFAULT]"
             echo "  --config FILE   Use custom config file"
+            echo "  --source DIR    Source directory for main.py and data/ (default: script parent)"
             echo "  --help          Show this help message"
             echo ""
             echo "Examples:"
             echo "  $0                           # Interactive mode"
             echo "  $0 --fast                    # Non-interactive (fast setup)"
             echo "  $0 --config custom.conf --fast  # Custom config + fast"
+            echo "  $0 --source /var/www/app --fast # Specific source directory"
             exit 0
             ;;
         *)
@@ -71,9 +81,6 @@ while [[ $# -gt 0 ]]; do
             ;;
     esac
 done
-
-# Get script directory
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # =============================================================================
 # LOAD CONFIGURATION
@@ -234,30 +241,46 @@ log_info "Installing Python packages..."
 sudo $VENV_DIR/bin/pip install --upgrade pip setuptools wheel -q
 sudo $VENV_DIR/bin/pip install fastapi uvicorn gunicorn httpx pydantic python-dotenv -q
 
-# Copy source files from script directory to deployment directory
-SOURCE_DIR="$SCRIPT_DIR/.."
-log_info "Copying source files from $SOURCE_DIR..."
+# Copy source files from source directory to deployment directory
+log_info "Copying source files from: $SOURCE_DIR"
 
+# Verify source directory exists
+if [ ! -d "$SOURCE_DIR" ]; then
+    log_error "Source directory not found: $SOURCE_DIR"
+    log_info "Try using: sudo $0 --source /path/to/apiXVideo --fast"
+    exit 1
+fi
+
+# Copy main.py
 if [ -f "$SOURCE_DIR/main.py" ]; then
     sudo cp "$SOURCE_DIR/main.py" $DEPLOY_DIR/
     log_success "Copied main.py"
 else
-    log_warning "main.py not found in source directory"
+    log_error "main.py not found in $SOURCE_DIR"
+    exit 1
 fi
 
+# Copy data directory
 if [ -d "$SOURCE_DIR/data" ]; then
     sudo cp -r "$SOURCE_DIR/data" $DEPLOY_DIR/
     log_success "Copied data directory"
 else
-    log_warning "data directory not found in source directory"
+    log_error "data directory not found in $SOURCE_DIR"
+    exit 1
+fi
+
+# Copy requirements.txt if exists (optional)
+if [ -f "$SOURCE_DIR/requirements.txt" ]; then
+    sudo cp "$SOURCE_DIR/requirements.txt" $DEPLOY_DIR/
+    log_success "Copied requirements.txt"
 fi
 
 # Set proper permissions
 sudo chown -R nobody:nobody $DEPLOY_DIR
-sudo chmod 755 $DEPLOY_DIR
-sudo chmod 644 $DEPLOY_DIR/main.py 2>/dev/null || true
+sudo find $DEPLOY_DIR -type f -exec chmod 644 {} \;
+sudo find $DEPLOY_DIR -type d -exec chmod 755 {} \;
 
-log_success "Project directory ready"
+log_success "Project directory ready with source files"
 echo ""
 
 # =============================================================================
