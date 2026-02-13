@@ -1,0 +1,106 @@
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+.env.systemd
+CREDENTIALS.txt
+credentials.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+*.pot
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Backup & Temporary Files
+*.bak
+*.tmp
+*.temp
+*~
+.#*
+
+# Git
+.git/
+
+# Sensitive Deployment Files
+/deployment/CREDENTIALS.txt
+/deployment/*.tmp
+/deployment/*.bak
+production.env.backup
+
+# Backups & Archives
+backups/
+*.tar.gz
+*.zip
+*.rar
+
+# Data Files (optional - uncomment if you want to exclude)
+# data/categoryvideo/
+# data/reelsvideo/
+# data/livestream/
+
+# Systemd & Service Files (generated, don't track)
+/etc/systemd/system/*.service
+
+# nginx config (if generated)
+/etc/nginx/sites-available/
+
+# Node modules (if using any frontend)
+node_modules/
+npm-debug.log
+
+# Sensitive credentials
+*.key
+*.pem
+*.cert
+*.crt

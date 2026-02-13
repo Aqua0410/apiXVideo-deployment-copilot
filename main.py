@@ -9,6 +9,10 @@ from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, HttpUrl
 import httpx
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+
+# Load environment variables from .env file if it exists
+load_dotenv()
 
 app = FastAPI()
 DATA_DIR = "data"
